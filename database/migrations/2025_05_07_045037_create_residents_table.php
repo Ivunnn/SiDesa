@@ -14,15 +14,15 @@ return new class extends Migration {
             $table->id();
             $table->string('nik', 16);
             $table->string('name', 100);
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
             $table->date('birth_date');
             $table->string('birth_place', 100);
             $table->text('address');
             $table->string('religion', 50)->nullable();
-            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed']);
+            $table->enum('marital_status', ['Belum Kawin', 'Sudah Kawin', 'Cerai', 'Janda/Duda']);
             $table->string('occupation', 100)->nullable();
             $table->string('phone', 15)->nullable();
-            $table->enum('status', ['active', 'moved', 'deceased'])->default('active');
+            $table->enum('status', ['Aktif', 'Pindah', 'Meninggal'])->default('Aktif');
             $table->timestamps();
         });
     }
