@@ -14,6 +14,7 @@
                     <table class="table table-bordered table-hovered table-striped mt-3">
                         <thead>
                             <tr class="bg-primary text-white">
+                                <th>No</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Kelamin</th>
@@ -41,6 +42,7 @@
                         <tbody>
                             @foreach ($residents as $resident)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $resident->nik }}</td>
                                     <td>{{ $resident->name }}</td>
                                     <td>{{ $resident->gender }}</td>
@@ -53,21 +55,19 @@
                                     <td>{{ $resident->status }}</td>
                                     <td>
                                         <div>
-                                            <a href="/residents/{id}/detail" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-eye"></i>
-                                            Detail
                                             </a>
-                                            <a href="/residents/{id}/edit" class="btn btn-warning btn-sm">
+                                            <a href="/residents/{{ $resident->id }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fas fa-pen"></i>
                                             Edit
                                             </a>
-                                            <a href="" class="btn btn-danger btn-sm">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationDelete-{{ $resident->id }}" class="btn btn-danger btn-sm">
                                             <i class="fas fa-eraser"></i>
                                             Hapus
-                                            </a>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
+                                @include('pages.residents.confirmation-delete', ['resident' => $resident])
                             @endforeach
                         </tbody>
                         @endif

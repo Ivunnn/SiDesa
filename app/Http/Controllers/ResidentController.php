@@ -21,22 +21,22 @@ class ResidentController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nik' => ['required|string|max:16|min:16'],
-            'name' => ['required|string|max:100'],
-            'gender' => ['required', Rule::in(['male', 'female'])],
+        $validatedData = $request->validate([
+            'nik' => ['required', 'string', 'max:16', 'min:16'],
+            'name' => ['required', 'string', 'max:100'],
+            'gender' => ['required', Rule::in(['Laki-Laki', 'Perempuan'])],
             'birth_date' => ['required', 'date'],
             'birth_place' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:700'],
             'religion' => ['nullable', 'string', 'max:50'],
-            'marital_status' => ['required', Rule::in(['single', 'married', 'divorced', 'widowed'])],
+            'marital_status' => ['required', Rule::in(['Belum Kawin', 'Sudah Kawin', 'Cerai', 'Janda/Duda'])],
             'occupation' => ['nullable', 'string', 'max:100'],
             'phone' => ['nullable', 'string', 'max:15'],
-            'status' => ['required', Rule::in(['active', 'moved', 'deceased'])],
+            'status' => ['required', Rule::in(['Aktif', 'Pindah', 'Meninggal'])],
         ]);
 
-        Resident::create($request->validated());
-        return redirect()->route('residents.index')->with('success', 'Resident created successfully!');
+        Resident::create($validatedData);
+        return redirect()->route('residents.index')->with('success', 'Data penduduk berhasil ditambahkan!');
     }
 
     public function show($id)
@@ -64,21 +64,22 @@ class ResidentController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'nik' => ['required|string|max:16|min:16'],
-            'name' => ['required|string|max:100'],
-            'gender' => ['required', Rule::in(['male', 'female'])],
+            'nik' => ['required', 'string', 'max:16', 'min:16'],
+            'name' => ['required', 'string', 'max:100'],
+            'gender' => ['required', Rule::in(['Laki-Laki', 'Perempuan'])],
             'birth_date' => ['required', 'date'],
             'birth_place' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:700'],
             'religion' => ['nullable', 'string', 'max:50'],
-            'marital_status' => ['required', Rule::in(['single', 'married', 'divorced', 'widowed'])],
+            'marital_status' => ['required', Rule::in(['Belum Kawin', 'Sudah Kawin', 'Cerai', 'Janda/Duda'])],
             'occupation' => ['nullable', 'string', 'max:100'],
             'phone' => ['nullable', 'string', 'max:15'],
-            'status' => ['required', Rule::in(['active', 'moved', 'deceased'])],
+            'status' => ['required', Rule::in(['Aktif', 'Pindah', 'Meninggal'])],
         ]);
 
-        Resident::findOrFail($id)->update($request->validated());
-        return redirect()->route('residents.index')->with('success', 'Resident updated successfully!');
+        Resident::findOrFail($id)->update($validated);
+
+        return redirect()->route('residents.index')->with('success', 'Data penduduk berhasil diupdate!');
     }
 
     public function destroy($id)

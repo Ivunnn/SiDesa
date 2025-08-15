@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SiDesa - Dashboard</title>
+    <title>SiDesa</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -55,13 +55,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+           @include('layouts.footer')
             <!-- End of Footer -->
 
         </div>
@@ -108,6 +102,7 @@
     <!-- Page level plugins -->
     <script src="{{asset('template/vendor/chart.js/Chart.min.js')}}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <!-- Page level custom scripts -->
     <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script>
