@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResidentController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [AuthController::class, 'login']);
+Route::post('/', [AuthController::class, 'authenticate']);
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
